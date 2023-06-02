@@ -31,6 +31,7 @@
 		E8844DBF2A27AEE100C2D290 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8844DBE2A27AEE100C2D290 /* Artist.swift */; };
 		E8844DC12A27AF1A00C2D290 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8844DC02A27AF1A00C2D290 /* UserProfile.swift */; };
 		E8B1DBCC2A29E74900EEA38C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1DBCB2A29E74900EEA38C /* AuthResponse.swift */; };
+		E8C3DA482A2A487F0043713B /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3DA472A2A487F0043713B /* SettingsModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		E8844DBE2A27AEE100C2D290 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		E8844DC02A27AF1A00C2D290 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		E8B1DBCB2A29E74900EEA38C /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		E8C3DA472A2A487F0043713B /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				E8844DBE2A27AEE100C2D290 /* Artist.swift */,
 				E8844DC02A27AF1A00C2D290 /* UserProfile.swift */,
 				E8B1DBCB2A29E74900EEA38C /* AuthResponse.swift */,
+				E8C3DA472A2A487F0043713B /* SettingsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,8 +166,8 @@
 		E8844DA22A27AB1E00C2D290 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E8844D862A27A5C800C2D290 /* HomeViewController.swift */,
 				E8844D9C2A27AA8200C2D290 /* TabBarViewController.swift */,
+				E8844D862A27A5C800C2D290 /* HomeViewController.swift */,
 				E8844D9E2A27AAD700C2D290 /* SearchViewController.swift */,
 				E8844DA02A27AB0B00C2D290 /* LibraryViewController.swift */,
 			);
@@ -272,6 +275,7 @@
 				E8180A262A288A2D00CCBC0F /* Extensions.swift in Sources */,
 				E8844DA12A27AB0B00C2D290 /* LibraryViewController.swift in Sources */,
 				E8844DBF2A27AEE100C2D290 /* Artist.swift in Sources */,
+				E8C3DA482A2A487F0043713B /* SettingsModels.swift in Sources */,
 				E8844DAF2A27ABF000C2D290 /* PlaylistViewController.swift in Sources */,
 				E8844D852A27A5C800C2D290 /* SceneDelegate.swift in Sources */,
 				E8844DAD2A27ABD300C2D290 /* PlayerViewController.swift in Sources */,

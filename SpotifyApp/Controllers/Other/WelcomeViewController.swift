@@ -11,7 +11,7 @@ class WelcomeViewController: UIViewController {
     
     private let signInButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
+        button.backgroundColor = .systemBackground
         button.setTitle("Sign In with Spotify", for: .normal)
         button.setTitleColor(.label, for: .normal)
         button.layer.cornerRadius = 8

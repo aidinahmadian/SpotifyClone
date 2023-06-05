@@ -41,7 +41,7 @@ final class AuthManager {
     }
     
     private var tokenExpirationDate: Date? {
-        return UserDefaults.standard.object(forKey: "expiration") as? Date
+        return UserDefaults.standard.object(forKey: "expirationDate") as? Date
     }
     
     private var shouldRefreshToken: Bool {

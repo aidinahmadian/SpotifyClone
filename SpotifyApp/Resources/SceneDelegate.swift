@@ -15,9 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-//        if #available(iOS 15, *) {
-//            UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
-//        }
+        // correct the transparency bug for Tab bars
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        // correct the transparency bug for Navigation bars
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         let window = UIWindow(windowScene: windowScene)
         

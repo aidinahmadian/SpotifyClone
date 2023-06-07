@@ -14,9 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        if #available(iOS 15, *) {
-//            UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
-//        }
+        // correct the transparency bug for Tab bars
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        // correct the transparency bug for Navigation bars
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         

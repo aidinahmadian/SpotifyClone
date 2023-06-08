@@ -9,8 +9,8 @@ import UIKit
 
 enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel]) //1
-    case featuredPlaylists(viewModels: [NewReleasesCellViewModel]) //2
-    case recommendedTracks(viewModels: [NewReleasesCellViewModel]) //3
+    case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) //2
+    case recommendedTracks(viewModels: [RecommendedTrackCellViewModel]) //3
 }
 
 class HomeViewController: UIViewController {
@@ -87,7 +87,6 @@ class HomeViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
         //Featured Playlists
         APICaller.shared.getFeaturedPlaylists { result in
             defer {
@@ -100,8 +99,6 @@ class HomeViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
-        
         //Recommended Tracks
         APICaller.shared.getRecommendedGenres { result in
             switch result {
@@ -113,7 +110,6 @@ class HomeViewController: UIViewController {
                         seeds.insert(random)
                     }
                 }
-                
                 APICaller.shared.getRecommendations(genres: seeds) { recommendedResult in
                     defer {
                         group.leave()
@@ -125,12 +121,10 @@ class HomeViewController: UIViewController {
                         print(error.localizedDescription)
                     }
                 }
-                
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        
         group.notify(queue: .main) {
             guard let newAlbums = newReleases?.albums.items,
                   let playlists = featuredPlaylist?.playlists.items,
@@ -154,8 +148,18 @@ class HomeViewController: UIViewController {
                 numberOfTracks: $0.total_tracks,
                 artistName: $0.artists.first?.name ?? "-")
         })))
-        sections.append(.featuredPlaylists(viewModels: []))
-        sections.append(.recommendedTracks(viewModels: []))
+        sections.append(.featuredPlaylists(viewModels: playlists.compactMap({
+            return FeaturedPlaylistCellViewModel(
+                name: $0.name,
+                artworkURL: URL(string: $0.images.first?.url ?? ""),
+                creatorName: $0.owner.display_name)
+        })))
+        sections.append(.recommendedTracks(viewModels: tracks.compactMap({
+            RecommendedTrackCellViewModel(
+                name: $0.name,
+                artistName: $0.artists.first?.name ?? "-",
+                artworkURL: URL(string: $0.album.images.first?.url ?? ""))
+        })))
         collectionView.reloadData()
     }
     
@@ -171,7 +175,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let type = sections[section]
         switch type {
-            
         case .newReleases(let viewModels):
             return viewModels.count
         case .featuredPlaylists(let viewModels):
@@ -202,14 +205,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return UICollectionViewCell()
             }
             let viewModel = viewModels[indexPath.row]
-            cell.backgroundColor = .blue
+            cell.configure(with: viewModel)
             return cell
         case .recommendedTracks(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedTrackCollectionViewCell.identifier, for: indexPath) as? RecommendedTrackCollectionViewCell else {
                 return UICollectionViewCell()
             }
             let viewModel = viewModels[indexPath.row]
-            cell.backgroundColor = .green
+            cell.configure(with: viewModel)
             return cell
         }
     }
@@ -252,14 +255,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .absolute(200),
-                    heightDimension: .absolute(200)
+                    heightDimension: .absolute(220)
                 )
             )
             item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
             let verticalGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .absolute(200),
-                    heightDimension: .absolute(400)
+                    heightDimension: .absolute(450)
                 ),
                 repeatingSubitem: item,
                 count: 2
@@ -267,7 +270,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .absolute(200),
-                    heightDimension: .absolute(400)
+                    heightDimension: .absolute(450)
                 ),
                 repeatingSubitem: verticalGroup,
                 count: 1

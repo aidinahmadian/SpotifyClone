@@ -63,8 +63,8 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("")
-        
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         artistNameLabel.sizeToFit()
@@ -106,8 +106,8 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
         albumNameLabel.text = viewModel.name
         artistNameLabel.text = viewModel.artistName
         numberOfTracksLabel.text = "Tracks: \(viewModel.numberOfTracks)"
+        //albumCoverImageView.roundCorners([.topLeft, .bottomLeft], radius: 8)
         albumCoverImageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
-        albumCoverImageView.roundCorners([.topLeft, .bottomLeft], radius: 8)
     }
     
 }

@@ -137,6 +137,7 @@
 				E86FC7F32A310A730038A9D8 /* NewReleaseCollectionViewCell.swift */,
 				E86FC7F52A310AB70038A9D8 /* FeaturedPlaylistCollectionViewCell.swift */,
 				E86FC7F72A310AE60038A9D8 /* RecommendedTrackCollectionViewCell.swift */,
+				E856BB5A2A35CA3700CFD524 /* TitleHeaderCollectionReusableView.swift */,
 			);
 			path = Browse;
 			sourceTree = "<group>";
@@ -188,7 +189,6 @@
 				E885BC102A34898E00ECBEE0 /* PlaylistHeaderCollectionReusableView.swift */,
 				E8844D8D2A27A5C900C2D290 /* LaunchScreen.storyboard */,
 				E86FC7F22A310A2E0038A9D8 /* Browse */,
-				E856BB5A2A35CA3700CFD524 /* TitleHeaderCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

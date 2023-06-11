@@ -11,6 +11,17 @@ enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel]) //1
     case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) //2
     case recommendedTracks(viewModels: [RecommendedTrackCellViewModel]) //3
+    
+    var title: String {
+        switch self {
+        case .newReleases:
+            return "New Released Albums"
+        case .featuredPlaylists:
+            return "Featured Playlists"
+        case .recommendedTracks:
+            return "Recommended"
+        }
+    }
 }
 
 class HomeViewController: UIViewController {
@@ -256,7 +267,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             for: indexPath) as? TitleHeaderCollectionReusableView, kind == UICollectionView.elementKindSectionHeader else {
                 return UICollectionReusableView()
             }
-        header.configure(with: "TEST")
+        let section = indexPath.section
+        let title = sections[section].title
+        header.configure(with: title)
         return header
     }
     
@@ -266,7 +279,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let supplementaryViews = [
             NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                   heightDimension: .absolute(50)),
+                                                   heightDimension: .absolute(60)),
                 elementKind: UICollectionView.elementKindSectionHeader,
                 alignment: .top)
         ]
@@ -280,7 +293,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     heightDimension: .fractionalHeight(1.0)
                 )
             )
-            item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
+            //item.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 2.5, leading: 15, bottom: 2.5, trailing: 15)
+            
             let verticalGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
@@ -301,6 +316,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             section.orthogonalScrollingBehavior = .groupPaging
             section.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
             section.boundarySupplementaryItems = supplementaryViews
+            section.contentInsets = NSDirectionalEdgeInsets(top: 2.5, leading: 0, bottom: 2.5, trailing: 0)
             return section
             // -> CASE 1
         case 1:
@@ -310,7 +326,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     heightDimension: .absolute(220)
                 )
             )
-            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            //item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            
             let verticalGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .absolute(200),
@@ -329,6 +347,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             )
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .continuous
+            section.contentInsets = NSDirectionalEdgeInsets(top: 2.5, leading: 0, bottom: 2.5, trailing: 0)
             section.boundarySupplementaryItems = supplementaryViews
             return section
             // -> CASE 2
@@ -339,7 +358,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     heightDimension: .fractionalHeight(1.0)
                 )
             )
-            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            //item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 1, trailing: 0)
+            
             let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
@@ -350,6 +371,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             )
             let section = NSCollectionLayoutSection(group: group)
             section.boundarySupplementaryItems = supplementaryViews
+            section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 2.5, trailing: 0)
             return section
             // -> Default
         default:
@@ -359,7 +381,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     heightDimension: .fractionalHeight(1.0)
                 )
             )
+            //item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
             item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            
             let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),

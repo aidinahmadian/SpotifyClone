@@ -219,7 +219,7 @@ final class APICaller {
             print(request.url?.absoluteString ?? "none")
             let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
                 guard let data = data, error == nil else {
-                    completion(.failure(APIError.FailedToGetData))
+                    completion(.failure(APIError.failedToGetData))
                     return
                 }
                 do {
@@ -240,7 +240,6 @@ final class APICaller {
             task.resume()
         }
     }
-    
     
     // MARK: - Private
     

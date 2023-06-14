@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AllCatehoriesResponse: Codable {
+struct AllCategoriesResponse: Codable {
     let categories: Categories
 }
 

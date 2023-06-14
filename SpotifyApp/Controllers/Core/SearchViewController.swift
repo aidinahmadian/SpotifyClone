@@ -24,25 +24,27 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
             sectionProvider: { _,_ -> NSCollectionLayoutSection? in
                 let item = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
-                        widthDimension: .fractionalWidth(1),
+                        widthDimension: .fractionalWidth(0.5),
                         heightDimension: .fractionalHeight(1)
                     ))
                 item.contentInsets = NSDirectionalEdgeInsets(
                     top: 2,
                     leading: 7,
                     bottom: 2,
-                    trailing: 7)
+                    trailing: 7
+                )
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
                     heightDimension: .absolute(115)),
                     repeatingSubitem: item,
-                    count: 2)
-                
+                    count: 2
+                )
                 group.contentInsets = NSDirectionalEdgeInsets(
-                    top: 10,
+                    top: 5,
                     leading: 15,
-                    bottom: 10,
-                    trailing: 15)
+                    bottom: 5,
+                    trailing: 15
+                )
                 return NSCollectionLayoutSection(group: group)
             }))
     
@@ -125,7 +127,7 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
             vc.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(vc, animated: true)
         case .track(let model):
-            PlayBackPresenter.shared.startPlayback(from: self, track: model)
+            //PlayBackPresenter.shared.startPlayback(from: self, track: model)
             break
         case .playlist(let model):
             let vc = PlaylistViewController(playlist: model)

@@ -16,25 +16,26 @@ class CategoryViewController: UIViewController {
         collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection? in
             let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(1),
+                    widthDimension: .fractionalWidth(0.5),
                     heightDimension: .fractionalHeight(1)))
             item.contentInsets = NSDirectionalEdgeInsets(
                 top: 5,
                 leading: 5,
                 bottom: 0,
-                trailing: 5)
-            
+                trailing: 5
+            )
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(225)),
-                repeatingSubitem: item, count: 2)
+                repeatingSubitem: item,
+                count: 2
+            )
             group.contentInsets = NSDirectionalEdgeInsets(top: 5,
                 leading: 5,
                 bottom: 0,
                 trailing: 5)
             return NSCollectionLayoutSection(group: group)
         }))
-    
     
     //MARK: - Init
     

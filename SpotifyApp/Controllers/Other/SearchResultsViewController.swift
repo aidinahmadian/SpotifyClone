@@ -33,6 +33,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
     }

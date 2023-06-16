@@ -5,6 +5,7 @@
 //  Created by Aidin Ahmadian on 6/16/23.
 //
 
+import AVFoundation
 import Foundation
 import UIKit
 
@@ -31,16 +32,25 @@ final class PlaybackPresenter {
         return nil
     }
     
+    var player: AVPlayer?
+    
     func startPlayback(
         from viewController: UIViewController,
         track: AudioTrack
     ) {
+        guard let url = URL(string: track.preview_url ?? "") else {
+            return
+        }
+        player = AVPlayer(url: url)
+        player?.volume = 0.3
         self.track = track
         self.tracks = []
         let vc = PlayerViewController()
         vc.title = track.name
         vc.dataSource = self
-        viewController.present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+        viewController.present(UINavigationController(rootViewController: vc), animated: true) { [weak self] in
+            self?.player?.play()
+        }
     }
     
     func startPlayback(

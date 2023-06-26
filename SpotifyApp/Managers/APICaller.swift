@@ -93,7 +93,7 @@ final class APICaller {
                         "name": name
                     ]
                     request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
-                    
+                    print("Starting creation...")
                     let task = URLSession.shared.dataTask(with: request) { data, _, error in
                         guard let data = data, error == nil else {
                             completion(false)
@@ -101,9 +101,15 @@ final class APICaller {
                         }
                         
                         do {
-                            let result = try JSONDecoder().decode(Playlist.self, from: data)
-                            print("Created: \(result)")
-                            completion(true)
+                            let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                            if let response = result as? [String: Any], response["id"] as? String != nil {
+                                print("Created")
+                                completion(true)
+                            }
+                            else {
+                                print("Failed To get ID")
+                                completion(false)
+                            }
                         }
                         catch {
                             completion(false)

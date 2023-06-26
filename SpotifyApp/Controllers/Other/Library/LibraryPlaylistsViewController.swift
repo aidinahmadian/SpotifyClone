@@ -71,7 +71,7 @@ class LibraryPlaylistsViewController: UIViewController {
         }
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { _ in
             guard let field = alert.textFields?.first,
                   let text = field.text,
                   !text.trimmingCharacters(in: .whitespaces).isEmpty else {

@@ -24,11 +24,13 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
         view.addSubview(toggleView)
         toggleView.translatesAutoresizingMaskIntoConstraints = false
         toggleView.delegate = self
-        scrollView.delegate = self
+        
         view.addSubview(scrollView)
+        scrollView.delegate = self
         scrollView.contentSize = CGSize(width: view.width*2, height: scrollView.height)
         addChildViewController()
     }

@@ -24,6 +24,7 @@ class ActionLabelView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.textColor = .secondaryLabel
         return label
     }()
     
@@ -35,7 +36,6 @@ class ActionLabelView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .red
         clipsToBounds = true
         isHidden = true
         addSubview(button)

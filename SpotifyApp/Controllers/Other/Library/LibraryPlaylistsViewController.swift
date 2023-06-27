@@ -77,6 +77,8 @@ class LibraryPlaylistsViewController: UIViewController {
         }
     }
     
+    //MARK: Show Playlist Alert
+    
     public func showCreatePlaylistAlert() {
         let alert = UIAlertController(
             title: "New Playlist",
@@ -109,6 +111,8 @@ class LibraryPlaylistsViewController: UIViewController {
         present(alert, animated: true)
     }
 }
+
+//MARK: Extensions
 
 extension LibraryPlaylistsViewController: ActionLabelViewDelegate {
     func actionLabelViewDidTapButton(_ actionView: ActionLabelView) {

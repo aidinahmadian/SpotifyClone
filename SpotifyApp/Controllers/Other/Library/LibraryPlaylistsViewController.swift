@@ -66,6 +66,7 @@ class LibraryPlaylistsViewController: UIViewController {
     
     private func setUpNoPlaylistsView() {
         view.addSubview(noPlaylistsView)
+        noPlaylistsView.delegate = self
         noPlaylistsView.configure(
             with: ActionLabelViewViewModel(
                 text: "You don't have any playlists yet",

@@ -22,6 +22,8 @@ class LibraryAlbumsViewController: UIViewController {
             return tableView
         }()
     
+    private var observer: NSObjectProtocol?
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             view.backgroundColor = .systemBackground
@@ -30,9 +32,16 @@ class LibraryAlbumsViewController: UIViewController {
             view.addSubview(tableView)
             setUpNoAlbumsView()
             fetchData()
+            observer = NotificationCenter.default.addObserver(
+                forName: .albumSavedNotification,
+                object: nil, queue: .main,
+                using: { [weak self] _ in
+                    self?.fetchData()
+                }
+            )
         }
     
-        @objc func didTapClose() {
+    @objc func didTapClose() {
             dismiss(animated: true, completion: nil)
         }
     
@@ -54,6 +63,7 @@ class LibraryAlbumsViewController: UIViewController {
         }
     
         private func fetchData() {
+            albums.removeAll()
             APICaller.shared.getCurrentUserAlbums { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {

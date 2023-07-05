@@ -23,7 +23,6 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.backgroundColor = .red
         return label
     }()
     
@@ -33,7 +32,6 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
-        //label.backgroundColor = .blue
         return label
     }()
     
@@ -44,7 +42,6 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         button.tintColor = .secondaryLabel
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.masksToBounds = true
-        //button.backgroundColor = .black
         return button
     }()
     
@@ -77,13 +74,13 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         
         trackNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6).isActive = true
         trackNameLabel.leadingAnchor.constraint(equalTo: albumCoverImageView.trailingAnchor, constant: 10).isActive = true
-        trackNameLabel.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -10).isActive = true
+        trackNameLabel.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -5).isActive = true
         trackNameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
-        //artistNameLabel.topAnchor.constraint(equalTo: trackNameLabel.bottomAnchor, constant: 5).isActive = true
-        artistNameLabel.bottomAnchor.constraint(equalTo: moreButton.bottomAnchor).isActive = true
+        artistNameLabel.topAnchor.constraint(equalTo: trackNameLabel.bottomAnchor, constant: 5).isActive = true
+        //artistNameLabel.bottomAnchor.constraint(equalTo: moreButton.bottomAnchor).isActive = true
         artistNameLabel.leadingAnchor.constraint(equalTo: albumCoverImageView.trailingAnchor, constant: 10).isActive = true
-        artistNameLabel.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -10).isActive = true
+        artistNameLabel.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -5).isActive = true
         artistNameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true

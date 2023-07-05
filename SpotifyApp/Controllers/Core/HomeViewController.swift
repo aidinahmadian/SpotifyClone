@@ -15,7 +15,7 @@ enum BrowseSectionType {
     var title: String {
         switch self {
         case .newReleases:
-            return "New Released Albums"
+            return "Good afternoon"
         case .featuredPlaylists:
             return "Featured Playlists"
         case .recommendedTracks:
@@ -48,7 +48,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Spotify"
+        //title = "Spotify"
+        
+        navigationItem.title = "Spotify"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "gear"),
@@ -60,11 +64,40 @@ class HomeViewController: UIViewController {
         view.addSubview(spinner)
         fetchData()
         addLongTapGesture()
+        
+        let blurryEffect = UIBlurEffect(style: .regular)
+        let blurredStatusBar = UIVisualEffectView(effect: blurryEffect)
+        blurredStatusBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(blurredStatusBar)
+        blurredStatusBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        blurredStatusBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        blurredStatusBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blurredStatusBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        if NetworkMonitor.shared.isConnected {
+            print("You're on wifi")
+        } else {
+            print("You're not connected")
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func addLongTapGesture() {
@@ -216,7 +249,7 @@ class HomeViewController: UIViewController {
                 name: $0.name,
                 artworkURL: URL(string: $0.images.first?.url ?? ""),
                 numberOfTracks: $0.total_tracks,
-                artistName: $0.artists.first?.name ?? "-")
+                artistName: $0.artists.first?.name ?? "No Name!")
         })))
         sections.append(.featuredPlaylists(viewModels: playlists.compactMap({
             return FeaturedPlaylistCellViewModel(
@@ -227,7 +260,7 @@ class HomeViewController: UIViewController {
         sections.append(.recommendedTracks(viewModels: tracks.compactMap({
             RecommendedTrackCellViewModel(
                 name: $0.name,
-                artistName: $0.artists.first?.name ?? "-",
+                artistName: $0.artists.first?.name ?? "Unknown!",
                 artworkURL: URL(string: $0.album?.images.first?.url ?? ""))
         })))
         collectionView.reloadData()
@@ -415,7 +448,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
-                    heightDimension: .absolute(80)
+                    heightDimension: .absolute(60)
                 ),
                 repeatingSubitem: item,
                 count: 1

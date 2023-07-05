@@ -39,7 +39,7 @@ class LibraryViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let height: CGFloat = view.height-view.safeAreaInsets.top-view.safeAreaInsets.bottom-55
+        let height: CGFloat = view.height-view.safeAreaInsets.top-view.safeAreaInsets.bottom-35
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -65,12 +65,12 @@ class LibraryViewController: UIViewController {
     private func addChildViewController() {
         addChild(playlistsVC)
         scrollView.addSubview(playlistsVC.view)
-        playlistsVC.view.frame = CGRect(x: 0, y: 0, width: scrollView.width, height: scrollView.height)
+        playlistsVC.view.frame = CGRect(x: 0, y: 0, width: scrollView.width, height: scrollView.height-35)
         playlistsVC.didMove(toParent: self)
         
         addChild(albumsVC)
         scrollView.addSubview(albumsVC.view)
-        albumsVC.view.frame = CGRect(x: view.width, y: 0, width: scrollView.width, height: scrollView.height)
+        albumsVC.view.frame = CGRect(x: view.width, y: 0, width: scrollView.width, height: scrollView.height-35)
         albumsVC.didMove(toParent: self)
     }
 }

@@ -70,6 +70,7 @@
 		E8A6070E2A32390300C2CA23 /* RecommendedTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A6070D2A32390300C2CA23 /* RecommendedTrackCellViewModel.swift */; };
 		E8B1DBCC2A29E74900EEA38C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1DBCB2A29E74900EEA38C /* AuthResponse.swift */; };
 		E8C3DA482A2A487F0043713B /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3DA472A2A487F0043713B /* SettingsModels.swift */; };
+		E8D7ACEF2A557BE5007B6477 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D7ACEE2A557BE5007B6477 /* NetworkMonitor.swift */; };
 		E8E459F82A31D2E500836021 /* NewReleasesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E459F72A31D2E500836021 /* NewReleasesCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,7 @@
 		E8A6070D2A32390300C2CA23 /* RecommendedTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCellViewModel.swift; sourceTree = "<group>"; };
 		E8B1DBCB2A29E74900EEA38C /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		E8C3DA472A2A487F0043713B /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		E8D7ACEE2A557BE5007B6477 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		E8E459F72A31D2E500836021 /* NewReleasesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesCellViewModel.swift; sourceTree = "<group>"; };
 		FC12B523C0B0A643951FE026 /* Pods-SpotifyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyApp.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyApp/Pods-SpotifyApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -298,6 +300,7 @@
 				E8844DB22A27AE1E00C2D290 /* AuthManager.swift */,
 				E8844DB42A27AE4700C2D290 /* APICaller.swift */,
 				E8844DB62A27AE6300C2D290 /* HapticsManager.swift */,
+				E8D7ACEE2A557BE5007B6477 /* NetworkMonitor.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				E89692462A3B0F5D002EEA39 /* SearchResultDefaultTableViewCell.swift in Sources */,
 				E8844DA72A27AB7A00C2D290 /* WelcomeViewController.swift in Sources */,
 				E87CD4932A3889B700113891 /* CategoryCollectionViewCellViewModel.swift in Sources */,
+				E8D7ACEF2A557BE5007B6477 /* NetworkMonitor.swift in Sources */,
 				E88425322A326823002109CB /* PlaylistDetailsResponse.swift in Sources */,
 				E8844DB92A27AE9900C2D290 /* Playlist.swift in Sources */,
 				E8844DB32A27AE1E00C2D290 /* AuthManager.swift in Sources */,

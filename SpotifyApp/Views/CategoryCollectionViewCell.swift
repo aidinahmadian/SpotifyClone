@@ -33,7 +33,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    //private let myColor: UIColor = .random
+    private let myColor: UIColor = .random
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +69,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: CategoryCollectionViewCellViewModel) {
         label.text = viewModel.title
         imageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
-        contentView.backgroundColor = .red //myColor
+        contentView.backgroundColor = myColor
     }
     
 }

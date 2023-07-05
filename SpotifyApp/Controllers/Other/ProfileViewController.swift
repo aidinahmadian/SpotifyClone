@@ -56,6 +56,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         models.append("Email Address: \(model.email)")
         models.append("User ID: \(model.id)")
         models.append("Plan: \(model.product)")
+        models.append("Country: \(model.country)")
         createTableHeader(with: model.images.first?.url)
         tableView.reloadData()
     }
@@ -66,6 +67,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width/1.5))
+        
         let imageSize: CGFloat = headerView.height/2
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: imageSize, height: imageSize))
         headerView.addSubview(imageView)
@@ -74,6 +76,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         imageView.sd_setImage(with: url, completed: nil)
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageSize/2
+        
         tableView.tableHeaderView = headerView
     }
     
@@ -95,6 +98,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = models[indexPath.row]
+        cell.textLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         cell.selectionStyle = .none
         return cell
     }

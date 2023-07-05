@@ -13,7 +13,7 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
     
     private let albumCoverImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
+        imageView.image = UIImage(systemName: "music.note.list")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

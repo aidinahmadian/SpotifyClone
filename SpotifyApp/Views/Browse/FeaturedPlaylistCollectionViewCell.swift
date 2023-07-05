@@ -12,7 +12,7 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
     
     private let playlistCoverImageView: UIImageView = {
       let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
+        imageView.image = UIImage(systemName: "music.note.list")
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 4
         imageView.contentMode = .scaleAspectFill

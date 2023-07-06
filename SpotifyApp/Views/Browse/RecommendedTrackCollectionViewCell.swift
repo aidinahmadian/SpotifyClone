@@ -49,8 +49,6 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .secondarySystemBackground
         contentView.backgroundColor = .secondarySystemBackground
-        //contentView.backgroundColor = .cyan
-        //contentView.layer.cornerRadius = 8
         contentView.clipsToBounds = true
         contentView.addSubview(albumCoverImageView)
         contentView.addSubview(trackNameLabel)

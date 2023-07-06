@@ -13,6 +13,11 @@ final class AuthManager {
     private var refreshingToken = false
     
     struct Constants {
+        // 1- Get your own clientID & clientSecret from "https://developer.spotify.com/"
+        // 2- Create a new account / or use your existing one and sign in
+        // 3- Go to your Profile -> Dashboard -> Create App
+        // 4- Go to your app that you just created on SpotifyDeveloper and tap -> Settings. in here, you can set your information and get your Client/Secret ID
+        // 5- As you can see, for the website and Redirect URIs I used "https://www.iosacademy.io"
         static let clientID = ""
         static let clientSecret = ""
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"
